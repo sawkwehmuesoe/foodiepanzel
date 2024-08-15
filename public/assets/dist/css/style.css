@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root{
+    --bg-color: #eec5b1;
+    --side-color: #f5ece7;
+    --textdark-color: #e67c7c;
+    --textlight-color: #f5abab;
+    --secondary-color: #a4b59d;
+}
+
+body{
+    font-family: "Nunito", sans-serif;
+    background-color: var(--side-color);
+    box-sizing: border-box;
+}
+
+
+/* Start Left Side Bar */
+.sidebars{
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+.logoboxs{
+    background-color: var(--side-color);
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.logoboxs img{
+    width: 100%;
+}
+
+.navlists{
+    background-color: var(--side-color);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sidebarlinks,.subbarlinks{
+    color: var(--textdark-color) !important;
+    font-size: 16px;
+    font-weight: 559;
+    position: relative;
+}
+
+.nav-categories{
+    color: #ce736a;
+    margin: 5px 0;
+    font-size: 19px;
+}
+
+.sidebarlinks:hover,.subbarlinks:hover{
+    color: var(--textlight-color) !important;
+}
+
+.sidebarlinks .mores{
+    position: absolute;
+    right: 15px;
+    /* right: 0; */
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    transition: all .2s ease-in;
+}
+
+.sidebarlinks.active .mores{
+    transform: rotate(180deg) translateY(50%);
+}
+
+.sublinks{
+    list-style: none;
+}
+/* End Left Side Bar */
+
+/* Start Top Side Bar */
+
+.topsidebars{
+    background-color: #f4f4f4;
+}
+
+#search{
+    color: #787777;
+    border: 1px solid #dfdada;
+    border-radius: 8px 0px 0px 8px;
+}
+
+#search:focus{
+    outline: none;
+}
+
+#search-btn{
+    background-color: var(--secondary-color);
+    border-radius: 0px 8px 8px 0px;
+}
+
+#search-btn:hover{
+    background-color: #7fad93;
+}
+
+.topsidelinks{
+    color: var(--secondary-color);
+}
+
+.topsidelinks:hover{
+    color: #98dc7d;
+}
+
+/* End Top Side Bar */
+
