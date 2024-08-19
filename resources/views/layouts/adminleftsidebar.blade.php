@@ -56,10 +56,34 @@
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 topsidelinks"><i class="fa-solid fa-bell"></i></a></li>
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 topsidelinks"><i class="fa-solid fa-envelope"></i></a></li>
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 topsidelinks"><i class="fa-solid fa-message"></i></a></li>
-                                    <li class="nav-item ">
+                                    <li class="nav-item profiles">
                                         <a href="javascript:void(0);" class="nav-link">
                                             <img src="https://preview.keenthemes.com/keen/demo1/assets/media/avatars/300-3.jpg" class="rounded" width="45" />
                                         </a>
+                                            <div class="profile-boxes">
+                                                <div class="d-flex user-profiles">
+                                                    <div class="me-3">
+                                                        <img src="https://preview.keenthemes.com/keen/demo1/assets/media/avatars/300-3.jpg" class="rounded" width="55" />
+                                                    </div>
+                                                    <div class="paragraps">
+                                                        <p class="text-dark fw-bold">{{ $userdata['name'] }}</p>
+                                                        <a href="">{{ $userdata['email'] }}</a>
+                                                        <span class="badge bg-success">pro</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-lists">
+                                                    <ul class="list-unstyled my-1">
+                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Profile</a></li>
+                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Project</a></li>
+                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Subscription</a></li>
+                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Statements</a></li>
+                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Language</a></li>
+                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Account Setting</a></li>
+                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Sign Out</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
                                     </li>
                                 </ul>
 

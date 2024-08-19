@@ -69,6 +69,9 @@ class StatusesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $status = Status::findOrFail($id);
+        $status->delete();
+
+        return redirect()->back();
     }
 }
