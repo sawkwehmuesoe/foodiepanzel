@@ -48,6 +48,7 @@ class CustomersController extends Controller
         $customer->user_id = $user->id;
 
         $customer->save();
+
         return redirect(route('customers.index'));
     }
 

@@ -5,7 +5,10 @@
     --side-color: #f5ece7;
     --textdark-color: #e67c7c;
     --textlight-color: #f5abab;
+    --textgreen-color: #7fad93;
     --secondary-color: #a4b59d;
+    --create-btn: #aed89e;
+    --create-btnhover: #99ee71;
 }
 
 body{
@@ -14,6 +17,10 @@ body{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+h3{
+    color: var(--textgreen-color);
 }
 
 
@@ -173,4 +180,75 @@ body{
 }
 
 /* End Top Side Bar */
+
+/* Start Content Section  */
+
+/* Start Table  */
+
+#mytable{
+    background: #f4f4f4 !important;
+}
+
+#mytable tbody td {
+    border-bottom: 1px dashed #e2e1e1;
+}
+
+/* Remove the bottom border from the last row's cells */
+#mytable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#mytable tbody tr:hover {
+    background-color: #f0e68c !important; /* Ensures your color is applied */
+}
+
+#mytable {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* End Table  */
+
+/* Start List Box */
+#list-boxs{
+    background:#ffffff95;
+    padding: 40px;
+    border-radius: 20px;
+    min-height: 80vh;
+    box-shadow: 2px 3px 5px rgba(0,0,0,0.1);
+}
+/* End List Box */
+
+/* Start Bottom */
+.btn-primary{
+    background: var(--create-btn) !important;
+    border: 0px;
+    font-weight: 600;
+}
+
+.btn-primary:hover{
+    background: var(--create-btnhover) !important;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary:active{
+    background: var(--create-btn) !important;
+}
+/* End Bottom */
+
+/* Start Font Control */
+
+.form-control{
+
+}
+
+.form-control:focus{
+    outline: none !important;
+    box-shadow: none;
+    border: none;
+}
+
+/* End Font Control  */
+
+/* End Content Section */
 

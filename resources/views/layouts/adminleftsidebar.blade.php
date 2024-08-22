@@ -31,6 +31,14 @@
                                         <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks">Documents</a></li>
                                     </ul>
                                 </li>
+
+                                <li class="nav-item nav-categories p-2">Apps</li>
+
+                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#usermanagement">User Management <i class="fas fa-angle-down mores"></i></a>
+                                    <ul id="usermanagement" class="collapse sublinks">
+                                        <li class="nav-item"><a href="{{route('customers.index')}}" class="nav-link subbarlinks">Customers</a></li>
+                                    </ul>
+                                </li>
                             </ul>
 
                         </div>
