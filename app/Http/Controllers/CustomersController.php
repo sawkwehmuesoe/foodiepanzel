@@ -31,20 +31,24 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'regnumber'=>'required|unique:customers,regnumber',
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'remark'=>'max:200'
-        ]);
+        // $this->validate($request,[
+        //     'accountid'=>'required|unique:customers,accountid',
+        //     'firstname'=>'required',
+        //     'lastname'=>'required',
+        //     'remark'=>'max:500'
+        // ]);
+
+        // dd("hee hee");
 
         $user = Auth::user();
         $customer = new Customer();
-        $customer->regnumber = $request['regnumber'];
+        $customer->accountid = $request['accountid'];
         $customer->firstname = $request['firstname'];
         $customer->lastname = $request['lastname'];
         $customer->slug = Str::slug($request['firstname']);
+        $customer->email = $request['email'];
         $customer->remark = $request['remark'];
+        $customer->address = $request['address'];
         $customer->user_id = $user->id;
 
         $customer->save();
@@ -57,7 +61,8 @@ class CustomersController extends Controller
      */
     public function show(string $id)
     {
-
+        $customer = Customer::findOrFail($id);
+        return view('customers.show',compact('customer'));
     }
 
     /**
@@ -65,7 +70,9 @@ class CustomersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        // dd($customer);
+        return view('customers.edit',compact('customer'));
     }
 
     /**
@@ -73,7 +80,21 @@ class CustomersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = Auth::user();
+        $user_id = $user['id'];
+        $customer = Customer::findOrFail($id);
+        $customer->accountid = $request['accountid'];
+        $customer->firstname = $request['firstname'];
+        $customer->lastname = $request['lastname'];
+        $customer->slug = Str::slug($request['firstname']);
+        $customer->email = $request['email'];
+        $customer->remark = $request['remark'];
+        $customer->address = $request['address'];
+        $customer->user_id = $user_id;
+
+        $customer->save();
+
+        return redirect(route('customers.index'));
     }
 
     /**

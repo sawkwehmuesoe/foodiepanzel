@@ -30,14 +30,38 @@ h3{
     background-color: var(--bg-color);
 }
 
-.logoboxs{
-    background-color: var(--side-color);
+.logoboxs {
     margin-top: 10px;
     border-radius: 5px;
+    position: relative;
+    overflow: hidden;
 }
 
-.logoboxs img{
+.logoboxs img {
     width: 100%;
+}
+
+.logoboxs::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(222, 113, 113, 0.179),
+        #fff,
+        rgba(242, 159, 159, 0.179)
+    );
+    background-size: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: background-size 0.5s ease, background-position 0.5s ease;
+}
+
+.logoboxs:hover::after {
+    background-size: 200%;
+    background-position: center;
 }
 
 .navlists{
@@ -47,20 +71,32 @@ h3{
 }
 
 .sidebarlinks,.subbarlinks{
-    color: var(--textdark-color) !important;
-    font-size: 16px;
+    color: #666 !important;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    font-size: 18px;
     font-weight: 559;
     position: relative;
+    padding: 10px 20px;
+}
+
+.subbarlinks{
+    padding-left: 40px !important;
 }
 
 .nav-categories{
     color: #ce736a;
     margin: 5px 0;
-    font-size: 19px;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 
 .sidebarlinks:hover,.subbarlinks:hover{
-    color: var(--textlight-color) !important;
+    color: var(--textdark-color) !important;
+    background: var(--side-color);
+    border-radius: 5px;
+
 }
 
 .sidebarlinks .mores{
@@ -251,4 +287,92 @@ h3{
 /* End Font Control  */
 
 /* End Content Section */
+
+/* Start Show Section  */
+
+/* start remark section  */
+
+.remarks{
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.remarks li{
+    font-size: 20px;
+}
+
+.remark-contents h2{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.remark-items{
+    line-height: 20px;
+}
+
+.remark-contents{
+    padding: 10px 20px;
+}
+
+/* end remark section  */
+
+/* start tab section  */
+
+.tabs h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tab-nav{
+    background-color: #f4f4f4;
+    margin: 10px 0px;
+    margin-bottom: 0;
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+}
+
+.tab-nav-items .tablinks{
+    font-size: 17px;
+    background: none;
+
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+}
+
+.tab-nav-items .tablinks.active,.tab-nav-items .tablinks:hover{
+    background: #e6e5e5;
+}
+
+.tab-panels{
+    padding: 10px 20px;
+
+    display: none;
+}
+
+.tab-panels h3{
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tab-panels p{
+    line-height: 25px;
+}
+
+.tab-panels .btn-close{
+    float: right;
+    cursor: pointer;
+}
+
+.tab-content{
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+/* end tab section  */
+
+/* End Show Section  */
 

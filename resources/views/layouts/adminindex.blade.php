@@ -9,7 +9,7 @@
 <section>
    <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-10 col-md-9 pt-md-5 mt-md-3 ms-auto p-0 ">
+            <div class="col-lg-10 col-md-9 pt-md-4 mt-md-3 ms-auto p-0 ">
 
                 {{-- Start Inner Content Area --}}
                 @yield('content')

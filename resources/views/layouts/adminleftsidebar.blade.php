@@ -7,36 +7,45 @@
                     <!-- Start Left Side Bar  -->
                     <div class="col-lg-2 col-md-3 fixed-top vh-100 overflow-auto sidebars">
                         <div class="logoboxs">
-                            <img src="{{asset('assets/dist/img/logo/foodiepanzellogo.png')}}" width="200" alt="logo">
+                            <a href="{{url('/dashboards')}}"><img src="{{asset('assets/dist/img/logo/foodiepanzellogo.png')}}" width="200" alt="logo"></a>
                         </div>
 
                         <div class="navlists mt-2">
 
-                            <ul class="navbar-nav flex-column">
-                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#dashboard">Dashboard <i class="fas fa-angle-down mores"></i></a>
+                            <ul class="navbar-nav flex-column bg-light rounded p-3">
+                                <li class="nav-item nav-categories p-2">Dashboard</li>
+                                {{-- <li class="nav-item"><a href="javascript:void(0);" class="nav-link text-secondary sidebarlinks" data-bs-toggle="collapse" data-bs-target="#dashboard">Dashboard <i class="fas fa-angle-down mores"></i></a>
                                     <ul id="dashboard" class="collapse sublinks">
                                         <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks">Default</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
 
                                 <hr class="text-success opacity-25" />
 
                                 <li class="nav-item nav-categories p-2">Page</li>
 
-                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#page">User Profile <i class="fas fa-angle-down mores"></i></a>
+                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#page"> <i class="fa-regular fa-id-badge pe-1 text-danger"></i> User Profile <i class="fas fa-angle-down mores"></i></a>
                                     <ul id="page" class="collapse sublinks">
-                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks">Overview</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks">Project</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks">Campaing</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks">Documents</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks"><i class="fa-solid fa-street-view"></i> Overview</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks"><i class="fa-solid fa-bars-progress"></i> Project</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks"><i class="fa-solid fa-bullhorn"></i> Campaing</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks"><i class="fa-solid fa-file"></i> Documents</a></li>
                                     </ul>
                                 </li>
 
+                                <hr class="text-success opacity-25" />
+
                                 <li class="nav-item nav-categories p-2">Apps</li>
 
-                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#usermanagement">User Management <i class="fas fa-angle-down mores"></i></a>
+                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#usermanagement"><i class="fa-solid fa-people-roof pe-1 text-danger"></i> User Management <i class="fas fa-angle-down mores"></i></a>
                                     <ul id="usermanagement" class="collapse sublinks">
-                                        <li class="nav-item"><a href="{{route('customers.index')}}" class="nav-link subbarlinks">Customers</a></li>
+                                        <li class="nav-item"><a href="{{route('customers.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-users"></i> Customers</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#fixedanalysis"><i class="fa-solid fa-magnifying-glass-chart pe-1 text-danger"></i> Fixed Analysis <i class="fas fa-angle-down mores"></i></a>
+                                    <ul id="fixedanalysis" class="collapse sublinks">
+                                        <li class="nav-item"><a href="{{route('statuses.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-hourglass-half"></i> Status</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -12,11 +12,13 @@ class Customer extends Model
     protected $table = "customers";
     protected $primaryKey = "id";
     protected $fillable = [
-        'regnumber',
+        'accountid',
         'firstname',
         'lastname',
         'slug',
+        'email',
         'remark',
+        'address',
         'status_id',
         'user_id'
     ];
