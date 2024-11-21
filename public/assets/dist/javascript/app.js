@@ -7,6 +7,14 @@ $(document).ready(function(){
         // console.log(this.classList);
     })
 
+    $("#myscription").click(function(){
+        $("#tocooklists").addClass('active')
+    })
+
+    $(".cookclosebtn").click(function(){
+        $("#tocooklists").removeClass('active')
+    })
+
 });
 
 
@@ -49,9 +57,90 @@ let gettablinks = document.querySelectorAll('.tablinks'),
 
     }
 
-    document.getElementById('autoclick').click();
+    // document.getElementById('autoclick').click();
 
 
 // end tab section
 
 // End Show Section
+
+// Start Todo Cook Section
+let getcookform = document.getElementById('tocookform');
+let getcookinput = document.getElementById('cookbox');
+let getcookul = document.getElementById('cookgroups');
+
+getcookform.addEventListener('submit',function(e){
+
+    addcooknew();
+
+    // updatecooklocal();
+
+    e.preventDefault();
+});
+
+let getcooklocals = JSON.parse(localStorage.getItem('tocooks'));
+
+if(getcooklocals){
+
+    getcooklocals.forEach(getcooklocal=>{
+        addcooknew(getcooklocal);
+    })
+
+}
+
+function addcooknew(tocook){
+
+    let todotext = getcookinput.value;
+
+    if(tocook){
+        todotext = tocook.text;
+    }
+
+    if(todotext){
+        const newli = document.createElement("li");
+
+        if(tocook && tocook.done){
+            newli.classList.add('completed');
+        }
+
+        newli.appendChild(document.createTextNode(todotext));
+        getcookul.appendChild(newli);
+
+        getcookinput.value = '';
+        getcookinput.focus();
+
+        updatecooklocal();
+
+        newli.onclick = function(){
+            this.classList.toggle('completed')
+            updatecooklocal();
+        }
+
+        newli.addEventListener('contextmenu',function(e){
+            this.remove();
+            e.preventDefault();
+        })
+
+    }
+
+}
+
+function updatecooklocal(){
+    let getlis = document.querySelectorAll('.tocooklists .list-group li');
+
+    let todolist = [];
+
+    getlis.forEach(function(getli){
+        todolist.push({
+            text:getli.textContent,
+            done:getli.classList.contains('completed')
+        })
+    })
+
+    localStorage.setItem('tocooks',JSON.stringify(todolist))
+
+}
+
+
+// End Todo Cook Section
+

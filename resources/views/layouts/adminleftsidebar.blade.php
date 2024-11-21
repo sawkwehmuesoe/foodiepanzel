@@ -90,13 +90,19 @@
                                                 </div>
                                                 <div class="profile-lists">
                                                     <ul class="list-unstyled my-1">
-                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Profile</a></li>
-                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Project</a></li>
-                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Subscription</a></li>
-                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Statements</a></li>
-                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Language</a></li>
-                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Account Setting</a></li>
-                                                        <li class=""><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Sign Out</a></li>
+                                                        <li class="profile-links"><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Profile</a></li>
+                                                        <li class="profile-links"><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Project</a></li>
+                                                        <li class="profile-links subscriptions"><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Subscription  <i class="fas fa-angle-right mores"></i></a>
+                                                            <div class="subscription-boxes">
+                                                                <ul class="list-unstyled my-1">
+                                                                    <li class="subscription-links"><a href="javascript:void(0);" id="myscription" class="text-secondary text-decoration-none d-block p-2 my-2">My Cook List</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                        <li class="profile-links"><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">My Statements</a></li>
+                                                        <li class="profile-links"><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Language</a></li>
+                                                        <li class="profile-links"><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Account Setting</a></li>
+                                                        <li class="profile-links"><a href="javascript:void(0);" class="text-secondary text-decoration-none d-block p-2 my-2">Sign Out</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -111,6 +117,8 @@
 
 
                     </div>
+
+
                     <!-- End Top Side Bar -->
 
                 </div>
@@ -118,5 +126,23 @@
         </div>
     </nav>
 </div>
+
+ {{-- Start Right Layar --}}
+ <div id="tocooklists" class="tocooklists shadow">
+
+    <button class="btn btn-secondary p-3 btn-close cookclosebtn"></button>
+    <h3>My Todo List</h3>
+    <small>Left click to complete & Right click to delete</small>
+    <form id="tocookform">
+        <div class="form-group">
+            <input type="text" name="cookbox" id="cookbox" class="form-control p-3 " placeholder="Write Something..." autocomplete="off" autofocus >
+        </div>
+    </form>
+
+    <ul id="cookgroups" class="list-group">
+
+    </ul>
+ </div>
+ {{-- End Right Layar --}}
 
 

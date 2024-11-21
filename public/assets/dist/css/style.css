@@ -17,6 +17,8 @@ body{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+
 }
 
 h3{
@@ -99,7 +101,11 @@ h3{
 
 }
 
-.sidebarlinks .mores{
+.profile-links{
+    position: relative;
+}
+
+.sidebarlinks .mores,.profile-links .mores{
     position: absolute;
     right: 15px;
     /* right: 0; */
@@ -123,6 +129,8 @@ h3{
 
 .topsidebars{
     background-color: #f4f4f4;
+    position: relative;
+    z-index: 10;
 }
 
 #search{
@@ -168,6 +176,8 @@ h3{
     position: absolute;
     right: 0;
     top: 120%;
+
+    z-index: 2;
 
     visibility: hidden;
     opacity: 0;
@@ -215,7 +225,143 @@ h3{
     background: var(--side-color) ;
 }
 
+.subscriptions{
+    position: relative;
+}
+
+.subscriptions .subscription-boxes{
+    min-width: 150px;
+    background-color: #f4f4f4;
+    box-shadow: -1px 2px 5px #b3b1b1;
+    border-radius: 10px;
+    padding: 10px 20px;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s linear;
+
+    position: absolute;
+    left: -67%;
+    top: -10px;
+
+    z-index: 2;
+}
+
+.profile-links:hover .subscription-boxes{
+    visibility: visible;
+    opacity: 1;
+}
+
+#myscription:active .profile-boxes{
+    visibility: hidden;
+    opacity: 0;
+}
+
 /* End Top Side Bar */
+
+/* Start Right Layar  */
+.tocooklists{
+    width: 25%;
+    height: 100%;
+
+    position: absolute;
+    right: -100%;
+    /* z-index: 1; */
+
+    visibility: hidden;
+    opacity: 0;
+
+    background: #f1f1f1;
+
+    padding: 50px;
+
+    transition: all .5s ease;
+}
+
+.tocooklists.active{
+    visibility: visible;
+    opacity: 1;
+    right: 0;
+}
+
+.tocooklists h3{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.tocooklists small{
+    color: var(--secondary-color);
+    display: block;
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+#tocookform .form-control{
+    color: #777;
+    font-size: 17px;
+
+    margin-bottom: 20px;
+}
+
+#tocookform .form-control::placeholder{
+    color: #bbb;
+}
+
+#tocookform .form-control:focus{
+    outline: none;
+}
+
+.tocooklists .list-group{
+    height: 300px;
+
+    padding: 0;
+    margin: 0;
+
+    overflow-y: scroll;
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid var(--create-btn);
+}
+
+.tocooklists .list-group::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+.tocooklists li{
+    color: #787777;
+    background: #f9f9f9;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    padding: 20px;
+    margin-top: -1px;
+
+    cursor: pointer;
+}
+
+.tocooklists li:hover{
+    background: #f1f1f1;
+}
+
+.tocooklists li.completed{
+    color: var(--textgreen-color);
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+.tocooklists li.completed::after{
+    content: 'done';
+    float: right;
+    color: var(--textgreen-color);
+}
+
+/* End Right Layar  */
 
 /* Start Content Section  */
 
