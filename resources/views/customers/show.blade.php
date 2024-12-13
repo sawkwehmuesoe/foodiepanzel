@@ -76,7 +76,7 @@
                                 <div class="bg-white p-4 rounded remarks">
 
                                     <ul class="list-group text-center rounded-0">
-                                        <li class="list-group-item p-4 fw-bold">Information</li>
+                                        <li class="list-group-item p-4 fw-bold z-0">Information</li>
                                     </ul>
 
                                     {{-- start remark  --}}

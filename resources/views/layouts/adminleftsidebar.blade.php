@@ -37,6 +37,12 @@
 
                                 <li class="nav-item nav-categories p-2">Apps</li>
 
+                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#foodfinder"><i class="fa-solid fa-bowl-food pe-1 text-danger"></i> Food Finder <i class="fas fa-angle-down mores"></i></a>
+                                    <ul id="foodfinder" class="collapse sublinks">
+                                        <li class="nav-item"><a href="{{route('searchfoods.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-cake-candles"></i> Search Food</a></li>
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#usermanagement"><i class="fa-solid fa-people-roof pe-1 text-danger"></i> User Management <i class="fas fa-angle-down mores"></i></a>
                                     <ul id="usermanagement" class="collapse sublinks">
                                         <li class="nav-item"><a href="{{route('customers.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-users"></i> Customers</a></li>
@@ -57,7 +63,7 @@
                     <!-- Start Top Side Bar -->
                     <div class="col-lg-10 col-md-9 ms-auto p-0 ">
 
-                        <nav class="navbar navbar-expand-lg px-4 py-0 shadow topsidebars">
+                        <nav class="navbar navbar-expand-lg px-4  shadow topsidebars">
                             <form class="" action="">
                                 <div class="form-group d-flex">
                                     <input type="text" name="search" id="search" class="form-control-md shadow-none px-2" placeholder="Search..." autocomplete="off" />
@@ -67,14 +73,14 @@
                                 </div>
                             </form>
 
-                            <div class="navbar-collapse justify-content-end me-4">
+                            <div class="navbar-collapse justify-content-end align-items-center me-4">
 
                                 <ul class="navbar-nav">
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 topsidelinks"><i class="fa-solid fa-bell"></i></a></li>
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 topsidelinks"><i class="fa-solid fa-envelope"></i></a></li>
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 topsidelinks"><i class="fa-solid fa-message"></i></a></li>
                                     <li class="nav-item profiles">
-                                        <a href="javascript:void(0);" class="nav-link">
+                                        <a href="javascript:void(0);" class="">
                                             <img src="https://preview.keenthemes.com/keen/demo1/assets/media/avatars/300-3.jpg" class="rounded" width="45" />
                                         </a>
                                             <div class="profile-boxes">
@@ -115,11 +121,31 @@
 
                         </nav>
 
+                         {{-- Start Right Layar --}}
+                        <div id="tocooklists" class="tocooklists shadow">
+
+                            <button class="btn btn-secondary p-3 btn-close cookclosebtn"></button>
+                            <h3>My Todo List</h3>
+                            <small>Left click to complete & Right click to delete</small>
+                            <form id="tocookform">
+                                <div class="form-group">
+                                    <input type="text" name="cookbox" id="cookbox" class="form-control p-3 " placeholder="Write Something..." autocomplete="off" autofocus >
+                                </div>
+                            </form>
+
+                            <ul id="cookgroups" class="list-group">
+
+                            </ul>
+                        </div>
+                        {{-- End Right Layar --}}
+
 
                     </div>
 
 
                     <!-- End Top Side Bar -->
+
+
 
                 </div>
             </div>
@@ -127,22 +153,6 @@
     </nav>
 </div>
 
- {{-- Start Right Layar --}}
- <div id="tocooklists" class="tocooklists shadow">
 
-    <button class="btn btn-secondary p-3 btn-close cookclosebtn"></button>
-    <h3>My Todo List</h3>
-    <small>Left click to complete & Right click to delete</small>
-    <form id="tocookform">
-        <div class="form-group">
-            <input type="text" name="cookbox" id="cookbox" class="form-control p-3 " placeholder="Write Something..." autocomplete="off" autofocus >
-        </div>
-    </form>
-
-    <ul id="cookgroups" class="list-group">
-
-    </ul>
- </div>
- {{-- End Right Layar --}}
 
 

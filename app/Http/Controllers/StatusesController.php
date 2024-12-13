@@ -18,23 +18,19 @@ class StatusesController extends Controller
         return view('statuses.index',compact('statuses'));
     }
 
-
-    public function create()
+    public function store(Request $request) //StatusCreateRequest
     {
-        return view('statuses.create');
-    }
-
-    public function store(StatusCreateRequest $request)
-    {
-        // $this->validate($request,[
-        //     'name'=>'required|unique:statuses,name',
-        // ]);
+        $this->validate($request,[
+            'name'=>'required|unique:statuses,name',
+        ]);
 
         $user = Auth::user();
+        $user_id = $user->id;
+
         $status = new Status();
-        $status->name = $request['firstname'];
+        $status->name = $request['name'];
         $status->slug = Str::slug($request['name']);
-        $status->user_id = $user->id;
+        $status->user_id = $user_id;
 
         $status->save();
         return redirect(route('statuses.index'));

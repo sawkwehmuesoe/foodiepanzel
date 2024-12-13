@@ -12,7 +12,7 @@ $(document).ready(function(){
     })
 
     $(".cookclosebtn").click(function(){
-        $("#tocooklists").removeClass('active')
+        $("#tocooklists").toggleClass('active')
     })
 
 });
@@ -143,4 +143,6 @@ function updatecooklocal(){
 
 
 // End Todo Cook Section
+
+
 
