@@ -63,7 +63,7 @@
                                     <td class="p-4 text-muted text-center">{{$status->created_at->format('d M Y h:i:s')}}</td>
 
                                     <td class="text-center">
-                                        <a href="{{route('customers.edit',$status->id)}}" class="text-info"><i class="fas fa-pen"></i></a>
+                                        <a href="javascript:void(0);" class="text-info editform" data-bs-toggle="modal" data-bs-target="#editmodal" data-id={{$status->id}} data-name={{$status->name}}><i class="fas fa-pen"></i></a>
                                         <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$status->name}}"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                     <form id="formdelete-{{$status->name}}" action="{{route('statuses.destroy',$status->id)}}" method="POST">
@@ -89,15 +89,36 @@
 
     {{-- START MODAL AREA --}}
         {{-- start edit modal --}}
-            <div id="editmodal" class="">
-                <div class="modal-dialog">
+            <div id="editmodal" class="modal fade">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h6 class="modal-title">Edit Form</h6>
                             <button type="text" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
+                            <form id="formaction" action="" method="POST">
 
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+
+                                <div class="row align-items-end">
+
+                                    <div class="col-md-8 form-group">
+                                        <label for="editname" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="name" id="editname" class="form-control" placeholder="Enter Status Name" value="{{old('firstname')}}" >
+                                    </div>
+
+
+                                    <div class='col-md-4'>
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -122,6 +143,8 @@
 
         $(document).ready(function(){
 
+
+            // Start Delete Item
             $('.delete-btns').click(function(){
 
                 var getidx = $(this).data('idx');
@@ -135,8 +158,23 @@
                 }
 
             });
+            // End Delete Item
+
+            // Start Edit Form
+                $(document).on('click','.editform',function(e){
+
+                    $("#editname").val($(this).data('name'))
+
+                    const getid = $(this).data('id');
+
+                    $("#formaction").attr('action',`/statuses/${getid}`)
+
+                    e.preventDefault();
+                })
+            // End Edit Form
 
         })
 
     </script>
 @endsection
+{{-- http://127.0.0.1:8000/statuses --}}

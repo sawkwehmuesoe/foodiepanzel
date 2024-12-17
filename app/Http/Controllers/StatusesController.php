@@ -36,17 +36,26 @@ class StatusesController extends Controller
         return redirect(route('statuses.index'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|unique:statuses,name,'.$id
+        ]);
+
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        $status = Status::findOrFail($id);
+        $status->name = $request['name'];
+        $status->slug = Str::slug($request['name']);
+        $status->user_id = $user_id;
+
+        $status->save();
+        return redirect(route('statuses.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $status = Status::findOrFail($id);
