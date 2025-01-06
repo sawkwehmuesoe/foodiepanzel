@@ -14,7 +14,6 @@
 
                         <div class="d-flex justify-content-between mb-4">
                             <h3 class="fs-3 fw-bold">@yield('caption')</h3>
-
                         </div>
 
                         <div class="col-md-12 mb-4">
@@ -27,7 +26,7 @@
 
                                     <div class="col-md-6 form-group">
                                         <label for="name" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Status Name" value="{{old('firstname')}}" >
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Status Name" value="{{old('status')}}" >
                                     </div>
 
 
@@ -106,7 +105,7 @@
 
                                     <div class="col-md-8 form-group">
                                         <label for="editname" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
-                                        <input type="text" name="name" id="editname" class="form-control" placeholder="Enter Status Name" value="{{old('firstname')}}" >
+                                        <input type="text" name="name" id="editname" class="form-control" placeholder="Enter Status Name" value="{{old('name')}}" >
                                     </div>
 
 

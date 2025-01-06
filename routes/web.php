@@ -3,20 +3,14 @@
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\FoodFinderController;
+use App\Http\Controllers\GamesController;
+use App\Http\Controllers\GendersController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\StagesController;
 use App\Http\Controllers\StatusesController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,7 +31,10 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('customers',CustomersController::class);
-
+    Route::get('/games',[GamesController::class,'index'])->name('games.index');
+    Route::resource('genders',GendersController::class);
+    Route::resource('roles',RolesController::class);
+    Route::resource('stages',StagesController::class);
     Route::resource('statuses',StatusesController::class);
 
     Route::get('/searchfoods',[FoodFinderController::class,'index'])->name('searchfoods.index');

@@ -361,6 +361,9 @@ h3{
     margin-top: -1px;
 
     cursor: pointer;
+
+    display: flex;
+	justify-content: space-between;
 }
 
 .tocooklists li:hover{
@@ -368,9 +371,9 @@ h3{
 }
 
 .tocooklists li.completed{
-    color: var(--textgreen-color);
+    /* color: var(--textgreen-color); */
+    color: #7fad93b8;
     font-style: italic;
-    text-decoration: line-through;
 }
 
 .tocooklists li.completed::after{

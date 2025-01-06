@@ -30,6 +30,7 @@
                                         <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks"><i class="fa-solid fa-bars-progress"></i> Project</a></li>
                                         <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks"><i class="fa-solid fa-bullhorn"></i> Campaing</a></li>
                                         <li class="nav-item"><a href="javascript:void(0);" class="nav-link subbarlinks"><i class="fa-solid fa-file"></i> Documents</a></li>
+                                        <li class="nav-item"><a href="{{route('games.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-gamepad"></i> Games</a></li>
                                     </ul>
                                 </li>
 
@@ -51,6 +52,8 @@
 
                                 <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#fixedanalysis"><i class="fa-solid fa-magnifying-glass-chart pe-1 text-danger"></i> Fixed Analysis <i class="fas fa-angle-down mores"></i></a>
                                     <ul id="fixedanalysis" class="collapse sublinks">
+                                        <li class="nav-item"><a href="{{route('genders.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-hourglass-half"></i> Gender</a></li>
+                                        <li class="nav-item"><a href="{{route('stages.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-hourglass-half"></i> Stage</a></li>
                                         <li class="nav-item"><a href="{{route('statuses.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-hourglass-half"></i> Status</a></li>
                                     </ul>
                                 </li>
@@ -134,7 +137,12 @@
                             </form>
 
                             <ul id="cookgroups" class="list-group">
-
+                                <li class="list-group-item completed">A Sann
+                                    <div class="action">
+                                        <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         {{-- End Right Layar --}}

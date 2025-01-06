@@ -4,25 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use PDO;
 
-class Status extends Model
+class Stage extends Model
 {
     use HasFactory;
 
-    protected $table = "statuses";
+    protected $table = "stages";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name',
-        'slug',
-        'user_id'
+        "name",
+        "slub",
+        "user_id"
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
-    public function status(){
-        return $this->belongsTo(Status::class);
     }
 }
