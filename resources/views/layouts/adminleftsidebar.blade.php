@@ -52,9 +52,14 @@
 
                                 <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#fixedanalysis"><i class="fa-solid fa-magnifying-glass-chart pe-1 text-danger"></i> Fixed Analysis <i class="fas fa-angle-down mores"></i></a>
                                     <ul id="fixedanalysis" class="collapse sublinks">
-                                        <li class="nav-item"><a href="{{route('genders.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-hourglass-half"></i> Gender</a></li>
-                                        <li class="nav-item"><a href="{{route('stages.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-hourglass-half"></i> Stage</a></li>
-                                        <li class="nav-item"><a href="{{route('statuses.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-hourglass-half"></i> Status</a></li>
+                                        <li class="nav-item"><a href="{{route('cities.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-city"></i> City</a></li>
+                                        <li class="nav-item"><a href="{{route('countries.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-flag-usa"></i> Country</a></li>
+                                        <li class="nav-item"><a href="{{route('genders.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-person-half-dress"></i> Gender</a></li>
+                                        <li class="nav-item"><a href="{{route('roles.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-circle-user"></i> Role</a></li>
+                                        <li class="nav-item"><a href="{{route('stages.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-bars-staggered"></i> Stage</a></li>
+                                        <li class="nav-item"><a href="{{route('statuses.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-chart-simple"></i> Status</a></li>
+                                        <li class="nav-item"><a href="{{route('tags.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-tags"></i> Tags</a></li>
+                                        <li class="nav-item"><a href="{{route('types.index')}}" class="nav-link subbarlinks"><i class="fa-brands fa-typo3"></i> Types</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -147,14 +152,8 @@
                         </div>
                         {{-- End Right Layar --}}
 
-
                     </div>
-
-
                     <!-- End Top Side Bar -->
-
-
-
                 </div>
             </div>
         </div>

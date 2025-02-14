@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class RolesController extends Controller
 
     public function create()
     {
-
+        $statuses = Status::whereIn('id',[1,2])->get();
+        return view('roles.create',compact('statuses'));
     }
 
 
