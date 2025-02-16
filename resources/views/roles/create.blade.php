@@ -16,7 +16,7 @@
                             <h3 class="fs-3 fw-bold">@yield('caption')</h3>
                         </div>
 
-                        <form action="/roles" method="POST">
+                        <form action="/roles" method="POST" enctype="multipart/form-data">
 
                             @csrf
                             @method('POST')

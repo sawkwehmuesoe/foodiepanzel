@@ -22,10 +22,7 @@
                             <thead class="">
                                 <tr class="table-light">
                                     <th class="p-4 text-center text-muted fw-bold">No</th>
-                                    <th class="p-4 text-center text-muted fw-bold">Account Id</th>
-                                    <th class="p-4 text-center text-muted fw-bold">Customer Name</th>
-                                    <th class="p-4 text-center text-muted fw-bold">Email</th>
-                                    <th class="p-4 text-center text-muted fw-bold">Address</th>
+                                    <th class="p-4 text-center text-muted fw-bold"> Name</th>
                                     <th class="p-4 text-center text-muted fw-bold">Status</th>
                                     <th class="p-4 text-center text-muted fw-bold">By</th>
                                     <th class="p-4 text-center text-muted fw-bold">Created At</th>
@@ -36,8 +33,7 @@
                                 @foreach($roles as $idx=>$role)
                                 <tr>
                                     <td class="p-4 text-muted text-center">{{++$idx}}</td>
-
-                                    <td class="p-4 text-muted text-center"><a href="{{route('roles.show',$role->id)}}" class="text-success link-underline link-underline-opacity-0">{{$role->name}}</a></td>
+                                    <td class="p-4 text-muted"><div class="d-flex align-items-center"><img src="{{asset($role->image)}}" class="rounded-circle tableimages me-3" alt="{{$role->name}}" width="40" height="40" /><a href="{{route('roles.show',$role->id)}}" class="text-success link-underline link-underline-opacity-0">{{$role->name}}</a></div></td>
                                     <td class="p-4 text-muted text-center">{{$role->status->name}}</td>
                                     <td class="p-4 text-muted text-center">{{$userdata->name}}</td>
                                     <td class="p-4 text-muted text-center">{{$role->created_at->format('d M Y h:i:s')}}</td>
