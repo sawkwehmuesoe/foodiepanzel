@@ -38,9 +38,11 @@
 
                                 <li class="nav-item nav-categories p-2">Apps</li>
 
-                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#foodfinder"><i class="fa-solid fa-bowl-food pe-1 text-danger"></i> Food Finder <i class="fas fa-angle-down mores"></i></a>
-                                    <ul id="foodfinder" class="collapse sublinks">
-                                        <li class="nav-item"><a href="{{route('searchfoods.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-cake-candles"></i> Search Food</a></li>
+                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#articles"><i class="fa-solid fa-newspaper pe-1 text-danger"></i> Articles <i class="fas fa-angle-down mores"></i></a>
+                                    <ul id="articles" class="collapse sublinks">
+                                        <li class="nav-item"><a href="{{route('posts.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-address-card"></i> Post</a></li>
+                                        <li class="nav-item"><a href="{{route('searchfoods.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-scroll"></i> Announcement</a></li>
+                                        <li class="nav-item"><a href="{{route('searchfoods.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-bowl-food"></i> Search Food</a></li>
                                     </ul>
                                 </li>
 
@@ -50,8 +52,15 @@
                                     </ul>
                                 </li>
 
+                                <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#formmanagement"><i class="fa-brands fa-wpforms pe-1 text-danger"></i> Form <i class="fas fa-angle-down mores"></i></a>
+                                    <ul id="formmanagement" class="collapse sublinks">
+                                        <li class="nav-item"><a href="{{route('attendances.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-clipboard-user"></i> Att Form</a></li>
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item"><a href="javascript:void(0);" class="nav-link sidebarlinks" data-bs-toggle="collapse" data-bs-target="#fixedanalysis"><i class="fa-solid fa-magnifying-glass-chart pe-1 text-danger"></i> Fixed Analysis <i class="fas fa-angle-down mores"></i></a>
                                     <ul id="fixedanalysis" class="collapse sublinks">
+                                        <li class="nav-item"><a href="{{route('categories.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-icons"></i> Category</a></li>
                                         <li class="nav-item"><a href="{{route('cities.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-city"></i> City</a></li>
                                         <li class="nav-item"><a href="{{route('countries.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-flag-usa"></i> Country</a></li>
                                         <li class="nav-item"><a href="{{route('genders.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-person-half-dress"></i> Gender</a></li>

@@ -51,7 +51,7 @@
                             </form>
                         </div>
 
-                        <table id="mytable" class="table rounded shadow">
+                        <table id="mytable" class="table table-hover rounded shadow">
 
                             <thead class="">
                                 <tr class="table-light">
@@ -69,15 +69,15 @@
                                 <tr>
                                     <td class="p-4 text-muted text-center">{{++$idx}}</td>
                                     <td class="p-4 text-muted text-center">{{$type->name}}</td>
+                                    <td class="p-4 text-muted text-center">{{$type->status->name}}</td>
                                     <td class="p-4 text-muted text-center">{{$userdata->name}}</td>
-                                    <td class="p-4 text-muted text-center">{{$type->status_id}}</td>
                                     <td class="p-4 text-muted text-center">{{$type->created_at->format('d M Y h:i:s')}}</td>
 
                                     <td class="text-center">
-                                        <a href="javascript:void(0);" class="text-info editform" data-bs-toggle="modal" data-bs-target="#editmodal" data-id={{$type->id}} data-name={{$type->name}}><i class="fas fa-pen"></i></a>
-                                        <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$type->name}}"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="javascript:void(0);" class="text-info editform" data-bs-toggle="modal" data-bs-target="#editmodal" data-id="{{$type->id}}" data-name="{{$type->name}}" data-status="{{$type->status_id}}"><i class="fas fa-pen"></i></a>
+                                        <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$type->id}}" data-idxname="{{$type->name}}"><i class="fas fa-trash-alt"></i></a>
                                     </td>
-                                    <form id="formdelete-{{$type->name}}" action="{{route('types.destroy',$type->id)}}" method="POST">
+                                    <form id="formdelete-{{$type->id}}" action="{{route('types.destroy',$type->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -101,7 +101,7 @@
     {{-- START MODAL AREA --}}
         {{-- start edit modal --}}
             <div id="editmodal" class="modal fade">
-                <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h6 class="modal-title">Edit Form</h6>
@@ -115,13 +115,22 @@
 
                                 <div class="row align-items-end">
 
-                                    <div class="col-md-8 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label for="editname" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
                                         <input type="text" name="name" id="editname" class="form-control" placeholder="Enter Type Name" value="{{old('name')}}" >
                                     </div>
 
+                                    <div class="col-md-3 form-group">
+                                        <label for="editstatus_id" class="text-muted fw-bold mb-2">Status <span class="text-danger">*</span></label>
+                                        <select name="status_id" id="editstatus_id" class="form-control rounded">
+                                            @foreach ($statuses as $status)
+                                                <option value="{{ $status['id'] }}">{{ $status['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
-                                    <div class='col-md-4'>
+
+                                    <div class='col-md-3'>
                                         <div class="d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
@@ -160,8 +169,9 @@
 
                 var getidx = $(this).data('idx');
                 // console.log(getidx);
+                var getidxname = $(this).data('idxname');
 
-                if(confirm(`Are you sure !!! you want to Delete ${getidx}`)){
+                if(confirm(`Are you sure !!! you want to Delete ${getidxname}`)){
                     $("#formdelete-"+getidx).submit();
                     return true;
                 }else{
@@ -174,7 +184,8 @@
             // Start Edit Form
                 $(document).on('click','.editform',function(e){
 
-                    $("#editname").val($(this).data('name'))
+                    $("#editname").val($(this).attr('data-name'));
+                    $("#editstatus_id").val($(this).data('status'));
 
                     const getid = $(this).data('id');
 

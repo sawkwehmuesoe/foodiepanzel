@@ -17,7 +17,7 @@
                             <a href="{{route('roles.create')}}" class="d-block btn btn-primary">Create Roles</a>
                         </div>
 
-                        <table id="mytable" class="table rounded shadow">
+                        <table id="mytable" class="table table-hover rounded shadow">
 
                             <thead class="">
                                 <tr class="table-light">
@@ -40,9 +40,9 @@
 
                                     <td class="text-center">
                                         <a href="{{route('roles.edit',$role->id)}}" class="text-info"><i class="fas fa-pen"></i></a>
-                                        <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$role->name}}"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$role->id}}" data-idxname="{{$role->name}}"><i class="fas fa-trash-alt"></i></a>
                                     </td>
-                                    <form id="formdelete-{{$role->regnumber}}" action="{{route('roles.destroy',$role->id)}}" method="POST">
+                                    <form id="formdelete-{{$role->id}}" action="{{route('roles.destroy',$role->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -82,9 +82,10 @@
             $('.delete-btns').click(function(){
 
                 var getidx = $(this).data('idx');
+                var getidxname = $(this).data('idxname');
                 // console.log(getidx);
 
-                if(confirm(`Are you sure !!! you want to Delete ${getidx}`)){
+                if(confirm(`Are you sure !!! you want to Delete ${getidxname}`)){
                     $("#formdelete-"+getidx).submit();
                     return true;
                 }else{

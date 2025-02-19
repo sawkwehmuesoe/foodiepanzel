@@ -1,5 +1,5 @@
 @extends('layouts.adminindex')
-@section('caption','Tags List')
+@section('caption','Category List')
 @section('content')
 
     <div class="container-fluid">
@@ -17,7 +17,7 @@
                         </div>
 
                         <div class="col-md-12 mb-4">
-                            <form action="{{route('tags.store')}}" method="POST">
+                            <form action="{{route('categories.store')}}" method="POST">
 
                                 {{ csrf_field() }}
                                 @method('POST')
@@ -26,7 +26,7 @@
 
                                     <div class="col-md-3 form-group">
                                         <label for="name" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Tag Name" value="{{old('tag')}}" >
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Category Name" value="{{old('name')}}" >
                                     </div>
 
                                     <div class="col-md-3">
@@ -65,19 +65,23 @@
                             </thead>
                             <tbody>
 
-                                @foreach($tags as $idx=>$tag)
+                                @foreach($categories as $idx=>$category)
                                 <tr>
                                     <td class="p-4 text-muted text-center">{{++$idx}}</td>
-                                    <td class="p-4 text-muted text-center">{{$tag->name}}</td>
-                                    <td class="p-4 text-muted text-center">{{$tag->status->name}}</td>
+                                    <td class="p-4 text-muted text-center">{{$category->name}}</td>
+                                    <td class="p-4 text-muted d-flex justify-content-center">
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" class="form-check-input" {{$category->status_id === 3 ? 'checked' : '' }} >
+                                        </div>
+                                    </td>
                                     <td class="p-4 text-muted text-center">{{$userdata->name}}</td>
-                                    <td class="p-4 text-muted text-center">{{$tag->created_at->format('d M Y h:i:s')}}</td>
+                                    <td class="p-4 text-muted text-center">{{$category->created_at->format('d M Y h:i:s')}}</td>
 
                                     <td class="text-center">
-                                        <a href="javascript:void(0);" class="text-info editform" data-bs-toggle="modal" data-bs-target="#editmodal" data-id={{$tag->id}} data-name="{{$tag->name}}" data-status="{{$tag->status_id}}"><i class="fas fa-pen"></i></a>
-                                        <a href="#" class="text-danger ms-2 delete-btns" data-idxname="{{$tag->name}}" data-idx="{{$tag->id}}"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="javascript:void(0);" class="text-info editform" data-bs-toggle="modal" data-bs-target="#editmodal" data-id="{{$category->id}}" data-name="{{$category->name}}" data-status="{{$category->status_id}}"><i class="fas fa-pen"></i></a>
+                                        <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$category->id}}" data-idxname="{{$category->name}}"><i class="fas fa-trash-alt"></i></a>
                                     </td>
-                                    <form id="formdelete-{{$tag->id}}" action="{{route('tags.destroy',$tag->id)}}" method="POST">
+                                    <form id="formdelete-{{$category->id}}" action="{{route('categories.destroy',$category->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -117,7 +121,7 @@
 
                                     <div class="col-md-6 form-group">
                                         <label for="editname" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
-                                        <input type="text" name="name" id="editname" class="form-control" placeholder="Enter tag Name" value="{{old('name')}}" >
+                                        <input type="text" name="name" id="editname" class="form-control" placeholder="Enter Type Name" value="{{old('name')}}" >
                                     </div>
 
                                     <div class="col-md-3 form-group">
@@ -168,8 +172,8 @@
             $('.delete-btns').click(function(){
 
                 var getidx = $(this).data('idx');
-                var getidxname = $(this).data('idxname');
                 // console.log(getidx);
+                var getidxname = $(this).data('idxname');
 
                 if(confirm(`Are you sure !!! you want to Delete ${getidxname}`)){
                     $("#formdelete-"+getidx).submit();
@@ -184,12 +188,12 @@
             // Start Edit Form
                 $(document).on('click','.editform',function(e){
 
-                    $("#editname").val($(this).data('name'));
+                    $("#editname").val($(this).attr('data-name'));
                     $("#editstatus_id").val($(this).data('status'));
 
                     const getid = $(this).data('id');
 
-                    $("#formaction").attr('action',`/tags/${getid}`)
+                    $("#formaction").attr('action',`/categories/${getid}`)
 
                     e.preventDefault();
                 })
@@ -199,4 +203,4 @@
 
     </script>
 @endsection
-{{-- http://127.0.0.1:8000/tags --}}
+{{-- http://127.0.0.1:8000/categories --}}

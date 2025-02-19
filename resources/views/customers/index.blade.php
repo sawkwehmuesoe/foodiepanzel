@@ -17,7 +17,7 @@
                             <a href="{{route('customers.create')}}" class="d-block btn btn-primary">Add Customer</a>
                         </div>
 
-                        <table id="mytable" class="table rounded shadow">
+                        <table id="mytable" class="table table-hover rounded shadow">
 
                             <thead class="">
                                 <tr class="table-light">

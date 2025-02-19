@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AttendancesController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\CustomersController;
@@ -7,6 +9,7 @@ use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\FoodFinderController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\GendersController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\StagesController;
@@ -33,12 +36,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-
+    Route::resource('attendances',AttendancesController::class);
+    Route::resource('categories',CategoriesController::class);
     Route::resource('customers',CustomersController::class);
     Route::resource('cities',CitiesController::class);
     Route::resource('countries',CountriesController::class);
     Route::get('/games',[GamesController::class,'index'])->name('games.index');
     Route::resource('genders',GendersController::class);
+    Route::resource('posts',PostsController::class);
     Route::resource('roles',RolesController::class);
     Route::resource('stages',StagesController::class);
     Route::resource('statuses',StatusesController::class);

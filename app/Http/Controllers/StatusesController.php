@@ -22,6 +22,7 @@ class StatusesController extends Controller
     {
         $this->validate($request,[
             'name'=>'required|unique:statuses,name',
+            "status_id"=>'required|in:3,4'
         ]);
 
         $user = Auth::user();

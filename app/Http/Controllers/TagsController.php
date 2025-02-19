@@ -13,7 +13,7 @@ class TagsController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        $statuses = Status::whereIn("id",[1,2])->get();
+        $statuses = Status::whereIn("id",[3,4])->get();
         // $statuses = Status::all()
         return view('tags.index',compact('tags','statuses'));
     }
@@ -22,6 +22,7 @@ class TagsController extends Controller
     {
         $this->validate($request,[
             "name"=>'required|unique:tags,name',
+            "status_id"=>'required|in:3,4'
         ]);
 
         $user = Auth::user();

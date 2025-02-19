@@ -131,6 +131,11 @@ h3{
     transition: all .2s ease-in;
 }
 
+.sidebarlinks.active{
+    background: rgb(241, 159, 141);
+    color: #fff9f8 !important;
+}
+
 .sidebarlinks.active .mores{
     transform: rotate(180deg) translateY(50%);
 }

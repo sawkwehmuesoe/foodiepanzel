@@ -13,7 +13,7 @@ class TypesController extends Controller
     public function index()
     {
         $types = Type::all();
-        $statuses = Status::whereIn("id",[1,2])->get();
+        $statuses = Status::whereIn("id",[3,4])->get();
         // $statuses = Status::all()
         return view('types.index',compact('types','statuses'));
     }
@@ -22,6 +22,7 @@ class TypesController extends Controller
     {
         $this->validate($request,[
             "name"=>'required|unique:types,name',
+            "status_id"=>'required|in:3,4'
         ]);
 
         $user = Auth::user();
@@ -42,7 +43,8 @@ class TypesController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request,[
-            "name"=>'required|unique:genders,name,'.$id,
+            "name"=>'required|unique:types,name,'.$id,
+            "status_id"=>'required|in:3,4'
         ]);
 
         $user = Auth::user();

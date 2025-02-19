@@ -59,8 +59,6 @@
 
                                 </div>
 
-
-
                             </div>
 
                             <div class="col-md-7">
@@ -73,10 +71,11 @@
 
                                     {{-- start remark  --}}
                                     <div class="remark-contents">
-                                        <h2>Remark Here</h2>
-                                        <p class="remark-items">
 
-                                        </p>
+                                        <div class="text-center mt-2">
+                                            <p>Nothing to show</p>
+                                        </div>
+
                                     </div>
                                     {{-- end remark  --}}
 
