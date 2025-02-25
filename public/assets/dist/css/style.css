@@ -425,6 +425,16 @@ h3{
     min-height: 80vh;
     box-shadow: 2px 3px 5px rgba(0,0,0,0.1);
 }
+
+#list-boxs .table-inners{
+    min-height: 72vh;
+}
+
+#list-boxs .table-inners .table td,#list-boxs .table-inners .table th {
+    vertical-align: middle !important;
+    white-space: nowrap;
+}
+
 /* End List Box */
 
 /* Start Bottom */

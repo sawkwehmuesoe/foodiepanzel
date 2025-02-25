@@ -13,8 +13,9 @@ class Post extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         "name",
+        "image",
         "title",
-        "slub",
+        "slug",
         "content",
         "fee",
         "startdate",
@@ -27,6 +28,13 @@ class Post extends Model
         "status_id",
         "user_id"
     ];
+
+    public function attstatus(){
+                                    // related foreignKey
+        // return $this->belongsTo(Status::class,'attshow');
+                                    // related foreignKey ownerkey
+        return $this->belongsTo(Status::class,'attshow','id');
+    }
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -41,7 +49,8 @@ class Post extends Model
     }
 
     public function type(){
-        return $this->belongsTo(Type::class);
+        // return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class,'type_id','id');
     }
 
 

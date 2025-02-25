@@ -47,7 +47,7 @@
 
                                         <div class="col-md-6 mb-3">
                                             <label for="status_id" class="text-muted fw-bold mb-2">Status <span class="text-danger">*</span></label>
-                                            <select type="text" name="status_id" id="status_id" class="form-control form-control-sm rounded-0" >
+                                            <select name="status_id" id="status_id" class="form-control form-control-sm rounded-0" >
 
                                                 @foreach ($statuses as $status)
                                                     <option value={{$status->id}}>{{$status->name}}</option>
