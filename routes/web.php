@@ -3,9 +3,11 @@
 use App\Http\Controllers\AttendancesController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CitiesController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\DashboardsController;
+use App\Http\Controllers\DaysController;
 use App\Http\Controllers\FoodFinderController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\GendersController;
@@ -38,9 +40,11 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('attendances',AttendancesController::class);
     Route::resource('categories',CategoriesController::class);
+    Route::resource('comments',CommentsController::class);
     Route::resource('customers',CustomersController::class);
     Route::resource('cities',CitiesController::class);
     Route::resource('countries',CountriesController::class);
+    Route::resource('days',DaysController::class);
     Route::get('/games',[GamesController::class,'index'])->name('games.index');
     Route::resource('genders',GendersController::class);
     Route::resource('posts',PostsController::class);

@@ -63,6 +63,7 @@
                                         <li class="nav-item"><a href="{{route('categories.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-icons"></i> Category</a></li>
                                         <li class="nav-item"><a href="{{route('cities.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-city"></i> City</a></li>
                                         <li class="nav-item"><a href="{{route('countries.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-flag-usa"></i> Country</a></li>
+                                        <li class="nav-item"><a href="{{route('days.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-sun"></i> Day</a></li>
                                         <li class="nav-item"><a href="{{route('genders.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-person-half-dress"></i> Gender</a></li>
                                         <li class="nav-item"><a href="{{route('roles.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-circle-user"></i> Role</a></li>
                                         <li class="nav-item"><a href="{{route('stages.index')}}" class="nav-link subbarlinks"><i class="fa-solid fa-bars-staggered"></i> Stage</a></li>
@@ -78,9 +79,9 @@
                     <!-- End Left Side Bar  -->
 
                     <!-- Start Top Side Bar -->
-                    <div class="col-lg-10 col-md-9 ms-auto p-0 ">
+                    <div class="col-lg-10 col-md-9 fixed-top ms-auto p-0 ">
 
-                        <nav class="navbar navbar-expand-lg px-4  shadow topsidebars">
+                        <nav class="navbar navbar-expand-lg px-4 shadow topsidebars">
                             <form class="" action="">
                                 <div class="form-group d-flex">
                                     <input type="text" name="search" id="search" class="form-control-md shadow-none px-2" placeholder="Search..." autocomplete="off" />

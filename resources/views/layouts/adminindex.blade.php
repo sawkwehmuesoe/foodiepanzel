@@ -6,7 +6,7 @@
 
 
 {{-- Start Content Area --}}
-<section>
+<section class="mt-5">
    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 col-md-9 pt-md-4 mt-md-3 ms-auto p-0 ">

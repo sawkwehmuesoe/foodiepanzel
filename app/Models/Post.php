@@ -36,6 +36,10 @@ class Post extends Model
         return $this->belongsTo(Status::class,'attshow','id');
     }
 
+    public function comments(){
+        return $this->morphMany(Comment::class,'commentable');
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }

@@ -17,38 +17,7 @@
                         </div>
 
                         <div class="col-md-12 mb-4">
-                            <form action="{{route('categories.store')}}" method="POST">
-
-                                {{ csrf_field() }}
-                                @method('POST')
-
-                                <div class="row align-items-end">
-
-                                    <div class="col-md-3 form-group">
-                                        <label for="name" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Category Name" value="{{old('name')}}" >
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label for="status_id">Status</label>
-                                        <select name="status_id" id="status_id" class="form-control form-control-sm rounded-0">
-                                            @foreach ($statuses as $status)
-                                                <option value="{{ $status['id'] }}">{{ $status['name'] }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-
-                                    <div class='col-md-6'>
-                                        <div class="d-flex justify-content-end">
-                                            <button type="reset" class="btn btn-secondary ms-3">Cancel</button>
-                                            <button type="submit" class="btn btn-primary ms-3">Submit</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </form>
+                            <a href="#createmodal" class="btn btn-primary btn-sm rounded-0" data-bs-toggle="modal">Create</a>
                         </div>
 
                         <table id="mytable" class="table table-hover rounded shadow">
@@ -100,6 +69,53 @@
         </div>
 
     </div>
+
+        {{-- START MODAL AREA --}}
+            {{-- start create modal --}}
+            <div id="createmodal" class="modal fade">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title">Create Form</h6>
+                            <button type="text" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formaction" action="{{route('categories.store')}}" method="POST">
+
+                                {{ csrf_field() }}
+
+                                <div class="row align-items-end">
+
+                                    <div class="col-md-6 form-group">
+                                        <label for="name" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter Category Name" value="{{old('name')}}" >
+                                    </div>
+
+                                    <div class="col-md-3 form-group">
+                                        <label for="status_id">Status</label>
+                                        <select name="status_id" id="status_id" class="form-control form-control-sm rounded-0">
+                                            @foreach ($statuses as $status)
+                                                <option value="{{ $status['id'] }}">{{ $status['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+
+                                    <div class='col-md-3'>
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary">Create</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- end create modal --}}
+        {{-- END MODAL AREA --}}
 
 
     {{-- START MODAL AREA --}}
