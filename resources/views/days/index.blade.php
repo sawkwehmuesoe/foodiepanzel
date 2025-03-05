@@ -1,5 +1,5 @@
 @extends('layouts.adminindex')
-@section('caption','Category List')
+@section('caption','Days List')
 @section('content')
 
     <div class="container-fluid">
@@ -34,23 +34,23 @@
                             </thead>
                             <tbody>
 
-                                @foreach($categories as $idx=>$category)
+                                @foreach($days as $idx=>$day)
                                 <tr>
                                     <td class="p-4 text-muted text-center">{{++$idx}}</td>
-                                    <td class="p-4 text-muted text-center">{{$category->name}}</td>
+                                    <td class="p-4 text-muted text-center">{{$day->name}}</td>
                                     <td class="p-4 text-muted d-flex justify-content-center">
                                         <div class="form-check form-switch">
-                                            <input type="checkbox" class="form-check-input" {{$category->status_id === 3 ? 'checked' : '' }} >
+                                            <input type="checkbox" class="form-check-input" {{$day->status_id === 3 ? 'checked' : '' }} >
                                         </div>
                                     </td>
                                     <td class="p-4 text-muted text-center">{{$userdata->name}}</td>
-                                    <td class="p-4 text-muted text-center">{{$category->created_at->format('d M Y h:i:s')}}</td>
+                                    <td class="p-4 text-muted text-center">{{$day->created_at->format('d M Y h:i:s')}}</td>
 
                                     <td class="text-center">
-                                        <a href="javascript:void(0);" class="text-info editform" data-bs-toggle="modal" data-bs-target="#editmodal" data-id="{{$category->id}}" data-name="{{$category->name}}" data-status="{{$category->status_id}}"><i class="fas fa-pen"></i></a>
-                                        <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$category->id}}" data-idxname="{{$category->name}}"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="javascript:void(0);" class="text-info editform" data-bs-toggle="modal" data-bs-target="#editmodal" data-id="{{$day->id}}" data-name="{{$day->name}}" data-status="{{$day->status_id}}"><i class="fas fa-pen"></i></a>
+                                        <a href="#" class="text-danger ms-2 delete-btns" data-idx="{{$day->id}}" data-idxname="{{$day->name}}"><i class="fas fa-trash-alt"></i></a>
                                     </td>
-                                    <form id="formdelete-{{$category->id}}" action="{{route('categories.destroy',$category->id)}}" method="POST">
+                                    <form id="formdelete-{{$day->id}}" action="{{route('days.destroy',$day->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -80,7 +80,7 @@
                             <button type="text" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="{{route('categories.store')}}" method="POST">
+                            <form action="{{route('days.store')}}" method="POST">
 
                                 {{ csrf_field() }}
 
@@ -88,7 +88,7 @@
 
                                     <div class="col-md-6 form-group">
                                         <label for="name" class="text-muted fw-bold mb-2">Name <span class="text-danger">*</span></label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter Category Name" value="{{old('name')}}" >
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter Day Name" value="{{old('name')}}" >
                                     </div>
 
                                     <div class="col-md-3 form-group">
@@ -131,7 +131,7 @@
                             <form id="formaction" action="" method="POST">
 
                                 {{ csrf_field() }}
-                                {{ method_field('PUT') }}
+                                {{ method_field('put') }}
 
                                 <div class="row align-items-end">
 
@@ -209,7 +209,7 @@
 
                     const getid = $(this).data('id');
 
-                    $("#formaction").attr('action',`/categories/${getid}`)
+                    $("#formaction").attr('action',`/days/${getid}`)
 
                     e.preventDefault();
                 })
@@ -219,4 +219,4 @@
 
     </script>
 @endsection
-{{-- http://127.0.0.1:8000/categories --}}
+{{-- http://127.0.0.1:8000/days --}}
