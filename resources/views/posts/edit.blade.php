@@ -63,6 +63,33 @@
                                             <label for="endtime" class="text-muted fw-bold mb-2">End Time <span class="text-danger">*</span></label>
                                             <input type="time" id="endtime" name="endtime" class="form-control" value="{{$post->endtime}}" >
                                         </div>
+
+                                        <div class="col-md-12 form-group">
+                                            <label>Days</label>
+                                           <div class="d-flex flex-wrap">
+                                            @foreach ($days as $idx=>$day )
+                                            <div class="form-check form-switch me-3">
+                                                <input type="checkbox" name="day_id[]" id="day_id{{$idx}}" class="form-check-input dayactions" value="{{$day->id}}"
+
+                                                @foreach ($dayables as $dayable)
+
+                                                    @if ($dayable["id"] === $day["id"])
+                                                        checked
+                                                    @endif
+
+                                                @endforeach
+
+
+
+                                                ><label for="day_id{{$idx}}">{{$day->name}}</label>
+                                            </div>
+                                            @endforeach
+                                           </div>
+
+                                           {{-- start hidden field --}}
+                                           <input type="hidden" name="dayable_type" id="dayable_type" value="App\Models\Post">
+                                           {{-- end hidden field --}}
+                                        </div>
                                     </div>
 
                                 </div>
@@ -218,10 +245,10 @@
 
         $(document).ready(function () {
 
-        let previewimages = function (input, output) {
+            // Start Single Image Preview
+            let previewimages = function (input, output) {
 
             // console.log(input,output);
-
 
 
             if (input.files) {
@@ -250,11 +277,44 @@
 
             }
 
-        }
-        // image from id
-        $("#image").change(function () {
+            }
+            // image from id
+            $("#image").change(function () {
             previewimages(this, ".gallery");
-        })
+            })
+
+            // End Single Image Preview
+
+
+            // Start Day Action
+
+            $('.dayactions').click(function(){
+
+                var checkboxs = $("input[type='checkbox']");
+                // console.log(checkboxs);
+
+                var checked = checkboxs.filter(':checked').map(function(){
+                    // return this.value;
+                    $(this).attr('name','newday_id[]');
+                })
+
+                var unchecked = checkboxs.not(':checked').map(function(){
+                    // return this.value;
+                    $(this).attr('name','oldday_id[]');
+                })
+
+                // check or uncheck
+                // if($(this).prop('checked')){
+                //     // console.log('yes');
+                //     console.log(checked);
+                // }else{
+                //     // console.log('no');
+                //     console.log(unchecked);
+                // }
+
+            })
+
+            // End Day Action
 
         });
 

@@ -52,6 +52,22 @@
                                             <label for="endtime" class="text-muted fw-bold mb-2">End Time <span class="text-danger">*</span></label>
                                             <input type="time" id="endtime" name="endtime" class="form-control" value="{{old('endtime')}}" >
                                         </div>
+
+                                        <div class="col-md-12 form-group">
+                                            <label>Days</label>
+                                           <div class="d-flex flex-wrap">
+                                            @foreach ($days as $idx=>$day )
+                                            <div class="form-check form-switch me-3">
+                                                <input type="checkbox" name="day_id[]" id="day_id{{$idx}}" class="form-check-input" value="{{$day->id}}" checked><label for="day_id{{$idx}}">{{$day->name}}</label>
+                                            </div>
+                                            @endforeach
+                                           </div>
+
+                                           {{-- start hidden field --}}
+                                           <input type="hidden" name="dayable_type" id="dayable_type" value="App\Models\Post">
+                                           {{-- end hidden field --}}
+                                        </div>
+
                                     </div>
 
                                 </div>

@@ -103,6 +103,16 @@
                                        <div class="d-flex justify-content-between">
                                                 <p class="mb-2"><span class="text-muted"><i class="fa-solid fa-calendar-week"></i> {{$post->created_at->format('d M Y | h:i:s')}}</span></p>
                                                 <p class="mb-2 text-end"><span class="text-muted"><i class="fa-solid fa-calendar-week"></i> {{$post->updated_at->format('d M Y | h:i:s')}}</span></p>
+                                       </div>
+
+                                       <div class="">
+                                            <i class="fas fa-calendar fa-sm"></i>
+                                            <span>
+                                                @foreach ($dayables as $dayable)
+                                                    {{$dayable["name"]}}
+                                                @endforeach
+                                            </span>
+
 
                                        </div>
 
