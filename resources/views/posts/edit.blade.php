@@ -201,7 +201,8 @@
 @endsection
 
 @section('css')
-
+{{-- summernote css1 js1 --}}
+<link href="{{asset('assets/dist/libs/summbernote0.9.0dist/summernote-lite.min.css')}}" rel="stylesheet">
 <style type="text/css">
 
 .gallery {
@@ -241,6 +242,8 @@
 @endsection
 
 @section('scripts')
+    {{-- summernote css1 js1 --}}
+    <script src="{{asset('assets/dist/libs/summbernote0.9.0dist/summernote-lite.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -315,6 +318,21 @@
             })
 
             // End Day Action
+
+            // text editor for content$
+            $("#content").summernote({
+                placeholder: 'Hello stand alone ui',
+                tabsize:2,
+                height:120,
+                toolbar: [
+                    ['style',['style']],
+                    ['font',['bold','underline','clear']],
+                    ['color',['color']],
+                    ['para',['ul','ol','paragraph']],
+                    ['insert',['link']],
+
+                ]
+            })
 
         });
 

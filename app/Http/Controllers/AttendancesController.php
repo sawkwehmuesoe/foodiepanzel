@@ -13,7 +13,7 @@ class AttendancesController extends Controller
 {
     public function index()
     {
-        $attendances = Attendance::all();
+        $attendances = Attendance::orderBy('updated_at','desc')->get();
         // $posts = Post::where('attshow',3)->get();
         $posts = DB::table('posts')->where('attshow',3)->orderBy('title','asc')->get();
 
@@ -46,18 +46,16 @@ class AttendancesController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request,[
-            "name"=>'required|unique:attendances,name,'.$id,
-            "status_id"=>'required|in:3,4'
+            "post_id"=>'required',
+            'attcode'=>'required'
         ]);
 
         $user = Auth::user();
         $user_id = $user->id;
 
         $attendance = Attendance::findOrFail($id);
-        $attendance->name = $request['name'];
-        $attendance->slug = Str::slug($request['name']);
-        $attendance->status_id = $request['status_id'];
-        $attendance->user_id = $user_id;
+        $attendance->post_id = $request['post_id'];
+        $attendance->attcode = $request['attcode'];
 
         $attendance->save();
         return redirect(route('attendances.index'));

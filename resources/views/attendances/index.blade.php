@@ -75,9 +75,10 @@
                                 @foreach($attendances as $idx=>$attendance)
                                 <tr>
                                     <td class="p-4 text-muted text-center">{{++$idx}}</td>
+                                    <td class="p-4 text-muted text-center">{{$attendance->customer($attendance->user_id)}}</td>
                                     <td class="p-4 text-muted text-center">{{$attendance->post->title}}</td>
                                     <td class="p-4 text-muted text-center">{{$attendance->attcode}}</td>
-                                    <td class="p-4 text-muted text-center">{{$userdata->name}}</td>
+                                    <td class="p-4 text-muted text-center">{{$attendance->user->name}}</td>
                                     <td class="p-4 text-muted text-center">{{$attendance->classdate}}</td>
                                     <td class="p-4 text-muted text-center">{{$attendance->created_at->format('d M Y h:i:s')}}</td>
 

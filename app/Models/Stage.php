@@ -14,10 +14,15 @@ class Stage extends Model
     protected $fillable = [
         "name",
         "slub",
+        "status_id",
         "user_id"
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function status(){
+        return $this->belongsTo(Status::class);
     }
 }

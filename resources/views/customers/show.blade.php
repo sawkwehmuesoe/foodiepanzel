@@ -14,7 +14,12 @@
 
                         <div class="d-flex justify-content-between mb-4">
                             <h3 class="fs-3 fw-bold">@yield('caption')</h3>
-                            <a href="{{route('customers.index')}}" class="d-block btn btn-secondary"><i class="fa-solid fa-arrow-left"></i></a>
+
+                            <div>
+                                <a href="javascript:void(0);" id="btn-back" class=" btn btn-secondary"><i class="fa-solid fa-arrow-left"></i></a>
+                                <a href="{{route('customers.index')}}" class=" btn btn-danger"> <i class="fa-solid fa-xmark"></i></a>
+                            </div>
+
                         </div>
 
                         <div class="row">
@@ -172,5 +177,18 @@
     }
 
 </style>
+@endsection
+
+
+@section('scripts')
+    <script type="text/javascript">
+        // Start Back Btn
+            const getbtnback = document.getElementById('btn-back');
+            getbtnback.addEventListener('click',function(){
+                // window.history.back();
+                window.history.go(-1);
+            })
+        // End Back Btn
+    </script>
 @endsection
 

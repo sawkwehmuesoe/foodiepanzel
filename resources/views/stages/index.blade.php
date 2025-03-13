@@ -24,11 +24,20 @@
 
                                 <div class="row align-items-end">
 
-                                    <div class="col-md-6 form-group">
+                                    <div class="col-md-3 form-group">
                                         <label for="name" class="text-muted fw-bold mb-2">Name <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="name" name="name" class="form-control"
                                             placeholder="Enter Gender Name" value="{{ old('name') }}">
+                                    </div>
+
+                                    <div class="col-md-3 form-group">
+                                        <label for="editstatus_id" class="text-muted fw-bold mb-2">Status <span class="text-danger">*</span></label>
+                                        <select name="status_id" id="editstatus_id" class="form-control rounded">
+                                            @foreach ($statuses as $status)
+                                                <option value="{{ $status['id'] }}">{{ $status['name'] }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
 
@@ -50,6 +59,7 @@
                                 <tr class="table-light">
                                     <th class="p-4 text-center text-muted fw-bold">No</th>
                                     <th class="p-4 text-center text-muted fw-bold">Name</th>
+                                    <th class="p-4 text-center text-muted fw-bold">Status</th>
                                     <th class="p-4 text-center text-muted fw-bold">By</th>
                                     <th class="p-4 text-center text-muted fw-bold">Created At</th>
                                     <th class="p-4 text-center text-muted fw-bold">Action</th>
@@ -60,6 +70,11 @@
                                     <tr>
                                         <td class="p-4 text-muted text-center">{{ ++$idx }}</td>
                                         <td class="p-4 text-muted text-center">{{ $stage->name }}</td>
+                                        <td class="p-4 text-muted  d-flex justify-content-center">
+                                            <div class="form-check form-switch">
+                                                <input type="checkbox" class="form-check-input" {{$stage->status_id === 3 ? 'checked' : '' }} >
+                                            </div>
+                                        </td>
                                         <td class="p-4 text-muted text-center">{{ $userdata->name }}</td>
                                         <td class="p-4 text-muted text-center">
                                             {{ $stage->created_at->format('d M Y h:i:s') }}</td>

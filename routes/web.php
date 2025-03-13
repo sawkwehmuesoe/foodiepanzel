@@ -8,6 +8,7 @@ use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DaysController;
+use App\Http\Controllers\EnrollsController;
 use App\Http\Controllers\FoodFinderController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\GendersController;
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('cities',CitiesController::class);
     Route::resource('countries',CountriesController::class);
     Route::resource('days',DaysController::class);
+    Route::resource('enrolls',EnrollsController::class);
     Route::get('/games',[GamesController::class,'index'])->name('games.index');
     Route::resource('genders',GendersController::class);
     Route::resource('posts',PostsController::class);

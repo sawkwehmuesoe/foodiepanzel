@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stage;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -13,13 +14,15 @@ class StagesController extends Controller
     public function index()
     {
         $stages = Stage::all();
-        return view('stages.index',compact('stages'));
+        $statuses = Status::whereIn('id',[3,4])->get();
+        return view('stages.index',compact('stages','statuses'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request,[
             "name"=>'required|unique:stages,name',
+            "status_id"=>'required|in:3,4'
         ]);
 
         $user = Auth::user();
@@ -28,6 +31,7 @@ class StagesController extends Controller
         $stage = new Stage();
         $stage->name = $request['name'];
         $stage->slug = Str::slug($request['name']);
+        $stage->status_id = $request['status_id'];
         $stage->user_id = $user_id;
 
         $stage->save();
@@ -40,6 +44,7 @@ class StagesController extends Controller
     {
         $this->validate($request,[
             "name"=>'required|unique:genders,name,'.$id,
+            "status_id"=>'required|in:3,4'
         ]);
 
         $user = Auth::user();
@@ -48,6 +53,7 @@ class StagesController extends Controller
         $stage = Stage::findOrFail($id);
         $stage->name = $request['name'];
         $stage->slug = Str::slug($request['name']);
+        $stage->status_id = $request['status_id'];
         $stage->user_id = $user_id;
 
         $stage->save();

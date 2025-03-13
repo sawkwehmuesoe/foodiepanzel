@@ -158,7 +158,10 @@
 @endsection
 
 @section('css')
-
+{{-- summernote css1 js1 --}}
+{{-- <link href="{{asset('assets/dist/libs/summernote-0.9.0-dist/summernote-lite.min.css')}}" rel="stylesheet" type="text/css"> --}}
+<link href="{{asset('assets/dist/libs/summernote-0.9.0-dist/summernote-bs5.min.css')}}" rel="stylesheet" type="text/css">
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"> --}}
 <style type="text/css">
 
 .gallery {
@@ -198,41 +201,60 @@
 @endsection
 
 @section('scripts')
+    {{-- summernote css1 js1 --}}
+    {{-- <script src="{{asset('assets/dist/libs/summernote-0.9.0-dist/summernote-lite.min.js')}}" type="text/javascript"></script> --}}
+    <script src="{{asset('assets/dist/libs/summernote-0.9.0-dist/summernote-bs5.min.js')}}" type="text/javascript"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script> --}}
     <script type="text/javascript">
 
         $(document).ready(function () {
 
-        let previewimages = function (input, output) {
+            let previewimages = function (input, output) {
 
-            if (input.files) {
+                if (input.files) {
 
-                let totalfiles = input.files.length;
+                    let totalfiles = input.files.length;
 
-                if (totalfiles > 0) {
-                    $(output).addClass("removetext")
-                } else {
-                    $(output).remove("removetext")
-                }
-
-                for (let x = 0; x < totalfiles; x++) {
-
-                    let filereader = new FileReader();
-                    filereader.readAsDataURL(input.files[x])
-
-                    filereader.onload = function (e) {
-
-                        $(output).html("");
-                        $($.parseHTML("<img>")).attr('src', e.target.result).appendTo(output);
+                    if (totalfiles > 0) {
+                        $(output).addClass("removetext")
+                    } else {
+                        $(output).remove("removetext")
                     }
+
+                    for (let x = 0; x < totalfiles; x++) {
+
+                        let filereader = new FileReader();
+                        filereader.readAsDataURL(input.files[x])
+
+                        filereader.onload = function (e) {
+
+                            $(output).html("");
+                            $($.parseHTML("<img>")).attr('src', e.target.result).appendTo(output);
+                        }
+                    }
+
                 }
 
             }
+            // image from id
+            $("#image").change(function () {
+                previewimages(this, ".gallery");
+            });
 
-        }
-        // image from id
-        $("#image").change(function () {
-            previewimages(this, ".gallery");
-        })
+            // text editor for content$
+            $("#content").summernote({
+                placeholder: 'Hello stand alone ui',
+                tabsize:2,
+                height:120,
+                toolbar: [
+                    ['style',['style']],
+                    ['font',['bold','underline','clear']],
+                    ['color',['color']],
+                    ['para',['ul','ol','paragraph']],
+                    ['insert',['link']],
+
+                ]
+            })
 
         });
 

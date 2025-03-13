@@ -84,6 +84,7 @@
 @endsection
 
 @section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" type="text/css">
 <style type="text/css">
 
     h3{
@@ -94,6 +95,7 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -111,7 +113,14 @@
                     return false;
                 }
 
+
+
+
             });
+
+            // for table
+            // let table = new DataTable('#mytable');
+            $("#mytable").DataTable();5
 
         })
 

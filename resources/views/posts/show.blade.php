@@ -37,9 +37,16 @@
 
                                     </div>
 
+                                    @if (!$post->checkenroll($userdata->id))
+                                        <div class="d-grid mb-4">
+                                            <a href="#createmodal" class="d-block btn btn-info" data-bs-toggle="modal">Enroll</a>
+                                        </div>
+                                    @endif
+
+
                                     <div class="detail-carts">
 
-                                        <p class="h6 fw-bold ms-3">Detail</p>
+                                        <p class="h6 fw-bold ms-3">Detail</p mb-4>
 
                                         <hr/>
 
@@ -136,7 +143,7 @@
                                         @if ($post->content)
                                             <div class="border">
                                                 <p class="remark-items">
-                                                    {{$post->content}}
+                                                    {!! $post->content !!}
                                                 </p>
                                             </div>
                                         @else
@@ -255,6 +262,52 @@
 
     </div>
 
+    {{-- End Content Area --}}
+
+    {{-- Start Model Area --}}
+    <div id="createmodal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Enroll Form</h6>
+                    <button type="text" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('enrolls.store')}}" method="POST" enctype="multipart/form-data">
+
+                        {{ csrf_field() }}
+
+                        <div class="row align-items-end">
+
+                            <div class="col-md-12 mb-3 form-group mb-3">
+                                <label for="image" id="image-label"><div class="gallery"><span>Choose Image</span></div></label>
+                                <input type="file" id="image" name="image" class="form-control" autocomplete="off" value="{{old('image')}}" hidden >
+                            </div>
+
+                            <div class="col-md-10 form-group">
+                                <label for="remark" class="text-muted fw-bold mb-2">Remark <span class="text-danger">*</span></label>
+                                <textarea name="remark" id="remark" class="form-control" placeholder="Enter Remark" rows="3" >{{old('remark')}}</textarea>
+                            </div>
+
+                            <div class='col-md-2'>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+
+                            {{-- Start Hidden Field  --}}
+                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                            {{-- End Hidden Field  --}}
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- End Model Area --}}
+
 @endsection
 
 @section('css')
@@ -273,6 +326,8 @@
         height: 100%;
         object-fit: cover;
     }
+
+    /* start comment area  */
 
     .chat-boxs{
         height: 400px;
@@ -294,6 +349,88 @@
         font-weight: bold;
     }
 
+    /* end comment area */
+
+    /* start image preview */
+
+    .gallery {
+        width: 100%;
+        background-color: #eee;
+        color: #aaa;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .gallery.removetext span {
+        display: none;
+    }
+
+    .gallery img {
+        width: 150px;
+        height: 150px;
+        border: 2px dashed #aaa;
+        border-radius: 10px;
+        object-fit: cover;
+
+        padding: 5px;
+        margin: 0 5px;
+    }
+
+    #image-label{
+        display: block;
+        width: 100%;
+    }
+
+    /* end image preview */
+
+
 </style>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        let previewimages = function (input, output) {
+
+            if (input.files) {
+
+                let totalfiles = input.files.length;
+
+                if (totalfiles > 0) {
+                    $(output).addClass("removetext")
+                } else {
+                    $(output).remove("removetext")
+                }
+
+                for (let x = 0; x < totalfiles; x++) {
+
+                    let filereader = new FileReader();
+                    filereader.readAsDataURL(input.files[x])
+
+                    filereader.onload = function (e) {
+
+                        $(output).html("");
+                        $($.parseHTML("<img>")).attr('src', e.target.result).appendTo(output);
+                    }
+                }
+
+            }
+
+        }
+        // image from id
+        $("#image").change(function () {
+            previewimages(this, ".gallery");
+        })
+
+        });
+
+    </script>
 @endsection
 
